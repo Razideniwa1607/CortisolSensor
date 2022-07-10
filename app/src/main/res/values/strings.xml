@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">deteksi warna</string>
+    <string name="nam">Nam</string>
+    <string name="nilai_rgb">Nilai RGB</string>
+    <string name="waktu">Waktu</string>
+    <string name="menu_utama">Menu Utama</string>
+    <string name="tingkat_stress">Tingkat Stress</string>
+</resources>
