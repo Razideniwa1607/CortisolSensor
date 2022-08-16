@@ -3,7 +3,9 @@ package com.example.serius;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,6 +24,8 @@ public class genderdanmetode extends AppCompatActivity{
 
 
     Button Lanjut;
+    SharedPreferences sp3;
+
 
 
 
@@ -32,18 +36,19 @@ public class genderdanmetode extends AppCompatActivity{
          Spinner List = findViewById(R.id.sp);
          Spinner List1= findViewById(R.id.sp2);
         Lanjut= findViewById(R.id.lanjut);
+        sp3= getSharedPreferences("gentode", Context.MODE_PRIVATE);
         // inisalisasi array pada spinner
         // spinner : properti android untuk memilih item pada list
         List<String> gender = new ArrayList<>();
-        gender.add(0, "Pilih");
+        gender.add(0, "Gender");
         gender.add("Laki-Laki");
         gender.add("Perempuan");
         List<String> metode = new ArrayList<>();
-        metode.add(0, "Pilih");
-        metode.add("Acid");
-        metode.add("Porter");
-        metode.add("Prusian");
-        metode.add("Blue");
+        metode.add(0, "Metode");
+        metode.add("Sulfuric Acid");
+        metode.add("aunp Sliber-Porter");
+        metode.add("Prussian Blue");
+        metode.add("Blue Tetrazelium");
         //
 
 
@@ -67,10 +72,20 @@ public class genderdanmetode extends AppCompatActivity{
             @Override
             // fungsi untuk memunculkan pop up setelah item dipilih
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
-                if (parent.getItemAtPosition(i).equals("Pilih")) { List.setSelection(0);
+                if (parent.getItemAtPosition(i).equals("Gender"))
+                { List.setSelection(0);
+                    String item1 = parent.getItemAtPosition(i).toString();
+
+                    SharedPreferences.Editor edit=sp3.edit();
+                    edit.putString("gender",item1);
+                    edit.apply();
                 } else {
-                    String item = parent.getItemAtPosition(i).toString();
-                    Toast.makeText(parent.getContext(), item + "telah dipilih", Toast.LENGTH_SHORT).show();
+                    String item1 = parent.getItemAtPosition(i).toString();
+                    Toast.makeText(parent.getContext(), "Gender "+item1 + " telah dipilih", Toast.LENGTH_SHORT).show();
+                    SharedPreferences.Editor edit=sp3.edit();
+                    edit.putString("gender",item1);
+                    edit.apply();
+
                 }
             }
 
@@ -83,21 +98,58 @@ public class genderdanmetode extends AppCompatActivity{
             @Override
             // fungsi untuk memunculkan pop up setelah item dipilih
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
-                if (parent.getItemAtPosition(i).equals("Pilih")) { List1.setSelection(0);
+                if (parent.getItemAtPosition(i).equals("Metode"))
+                { List1.setSelection(0);
+                    String item2 = parent.getItemAtPosition(i).toString();
+                    SharedPreferences.Editor edit=sp3.edit();
+                    edit.putString("metode",item2);
+                    edit.apply();
+
                 } else {
-                    String item = parent.getItemAtPosition(i).toString();
-                Toast.makeText(parent.getContext(),item+"telah dipilih", Toast.LENGTH_SHORT).show();
+                    String item2 = parent.getItemAtPosition(i).toString();
+                Toast.makeText(parent.getContext(),"Metode "+ item2+" telah dipilih" , Toast.LENGTH_SHORT).show();
+                    SharedPreferences.Editor edit=sp3.edit();
+                    edit.putString("metode",item2);
+                    edit.apply();
+
+
+
+
             }}
+
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 Toast.makeText(getApplicationContext(),"Tidak Ada Item Yang Dipilih", Toast.LENGTH_SHORT).show();
             }
         });
-        Lanjut.setOnClickListener(view -> openthird());
+        Lanjut.setOnClickListener( v -> {
+
+            SharedPreferences spm= getApplicationContext().getSharedPreferences("gentode", Context.MODE_PRIVATE);
+        String spm2 = spm.getString("metode", "");
+        String spm1 = spm.getString("gender", "");
+
+
+
+            if(spm1.equals("Gender")){
+                Toast.makeText(getBaseContext(), " Gender harap untuk diisi", Toast.LENGTH_SHORT).show();
+
+            }
+            else if (spm2.equals("Metode")){
+                    Toast.makeText(getBaseContext(), " Metode harap untuk diisi", Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
+         else{
+            Intent intent= new Intent(this,Hasil.class);
+            startActivity(intent);
+
+        }
+
+        });
     }
-    public void openthird(){// Fungsi untuk pindah halaman
-       Intent intent= new Intent(this,Hasil.class);
-       startActivity(intent);
-    }
+
 }
+

@@ -18,12 +18,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Objects;
+
 
 public class Hasil extends AppCompatActivity {
     ImageView imageView2;
     TextView nilaiwarna;
     Bitmap bitmap;
-    TextView Stress;
+    TextView Stress ;
     Button Simpan;
     SharedPreferences sp;
     String RGBStr, StressStr;
@@ -33,6 +35,10 @@ public class Hasil extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences spm = getApplicationContext().getSharedPreferences("gentode", Context.MODE_PRIVATE);
+        String spm1 = spm.getString("metode", "");
+        String spm2 = spm.getString("gender", "");
         setContentView(R.layout.hasil);
         sp= getSharedPreferences("preferensi2", Context.MODE_PRIVATE);
         imageView2 = findViewById(R.id.image_view2);
@@ -41,7 +47,8 @@ public class Hasil extends AppCompatActivity {
         nilaiwarna = findViewById(R.id.displayvalues);
         Stress = findViewById(R.id.stress);
         Simpan= findViewById(R.id.simpan);
-        MainActivity gambar = new MainActivity();
+
+
         // menampilkan gambar dari hasil foto di halaman sebelumnya
         Preferences preferences = new Preferences();
         String image = preferences.getRegisteredUser(this);
@@ -62,13 +69,122 @@ public class Hasil extends AppCompatActivity {
                 int b1 = Color.blue(pixel);
 
                 nilaiwarna.setText("RGB=" + r + "," + g + "," + b1 + " ");
-                if(r>100){
-                 Stress.setText("Stress Tinggi");
+                while(spm2.equals("Laki-Laki")) {
+                    if (Objects.equals(spm1, "Sulfuric Acid")) {
+                        if (b1 >= 172) {
+                            Stress.setText("Low distress");
+                        } else if (b1 < 172 && b1 >= 161) {
+                            Stress.setText("Low distress");
+                        } else if (b1 < 161 && b1 >= 128) {
+                            Stress.setText("Mild distress");
+                        } else if (b1 < 128 && b1 >= 104) {
+                            Stress.setText("Moderate distress");
+                        }
+                        else if (b1 < 104) {
+                            Stress.setText("Severe distress");
+                        }
+                        break;
+                    }
+                    if (Objects.equals(spm1, "aunp Sliber-Porter")) {
+                        if (b1 >= 215) {
+                            Stress.setText("Low distress ");
+                        } else if ( b1 < 215 && b1 >= 208) {
+                            Stress.setText("Mild Distress ");
+                        } else if (b1 < 208 && b1 >= 163) {
+                            Stress.setText("Moderate distress ");
+                        } else if (b1 < 163) {
+                            Stress.setText("Severe distress ");
+                        }
+                        break;
+                    }
+                    if (Objects.equals(spm1, "Prussian Blue")) {
+                        if (b1 >= 187) {
+                            Stress.setText("Low distress");
+                        } else if (b1 < 187 && b1 > 171) {
+                            Stress.setText("Low distress");
+                        } else if (b1 < 171 && b1 >= 163) {
+                            Stress.setText("Mild distress");
+                        } else if (b1 < 163 && b1 >= 149) {
+                            Stress.setText("Moderate distress");
+                        }
+                        else if (b1 < 149) {
+                            Stress.setText("Severe distress");
+                        }
+                        break;
+                    }
+                    if (Objects.equals(spm1, "Blue Tetrazelium")) {
+                        if (r >= 200) {
+                            Stress.setText("Low distress ");
+                        } else if (r < 200 && r >= 188) {
+                            Stress.setText("Mild distress ");
+                        } else if (r < 188 && r >=153) {
+                            Stress.setText("Moderate distress ");
+                        } else if (r < 153 ) {
+                            Stress.setText("Severe distress ");
+                        }
 
+                        break;
+                    }
                 }
-                else{
-                 Stress.setText("Stress Rendah")   ;
+                while(spm2.equals("Perempuan")) {
+                    if (Objects.equals(spm1, "Sulfuric Acid")) {
+                        if (b1 >= 172) {
+                            Stress.setText("Low distress");
+                        } else if (b1 < 172 && b1 >= 161) {
+                            Stress.setText("Low distress");
+                        } else if (b1 < 161 && b1 >= 128) {
+                            Stress.setText("Mild distress");
+                        } else if (b1 < 128 && b1 >= 104) {
+                            Stress.setText("Moderate distress");
+                        }
+                        else if (b1 < 104) {
+                            Stress.setText("Severe distress");
+                        }
+                        break;
+                    }
+                    if (Objects.equals(spm1, "aunp Sliber-Porter")) {
+                        if (b1 >= 215) {
+                            Stress.setText("Low distress ");
+                        } else if ( b1 < 215 && b1 >= 208) {
+                            Stress.setText("Mild Distress ");
+                        } else if (b1 < 208 && b1 >= 163) {
+                            Stress.setText("Moderate distress ");
+                        } else if (b1 < 163) {
+                            Stress.setText("Severe distress ");
+                        }
+                        break;
+                    }
+                    if (Objects.equals(spm1, "Prussian Blue")) {
+                        if (b1 >= 187) {
+                            Stress.setText("Low distress");
+                        } else if (b1 < 187 && b1 > 171) {
+                            Stress.setText("Low distress");
+                        } else if (b1 < 171 && b1 >= 163) {
+                            Stress.setText("Mild distress");
+                        } else if (b1 < 163 && b1 >= 149) {
+                            Stress.setText("Moderate distress");
+                        }
+                        else if (b1 < 149) {
+                            Stress.setText("Severe distress");
+                        }
+                        break;
+                    }
+                    if (Objects.equals(spm1, "Blue Tetrazelium")) {
+                        if (r >= 200) {
+                            Stress.setText("Low distress ");
+                        } else if (r < 200 && r >= 188) {
+                            Stress.setText("Mild distress ");
+                        } else if (r < 188 && r >=153) {
+                            Stress.setText("Moderate distress ");
+                        } else if (r < 153 ) {
+                            Stress.setText("Severe distress ");
+                        }
+
+                        break;
+                    }
                 }
+
+
             }
 
             return true;
@@ -83,8 +199,13 @@ public class Hasil extends AppCompatActivity {
             edit.putString("Stress",StressStr);
             edit.apply();
             //
+
+           // SharedPreferences.Editor editor = ();  ;
+           // editor.clear().commit();
             Intent intent = new Intent(Hasil.this,Simpan.class);
             startActivity(intent);
+
+
 
 
         });

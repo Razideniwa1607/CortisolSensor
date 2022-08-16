@@ -21,8 +21,9 @@ import java.util.Date;
 
 public class Simpan extends AppCompatActivity {
   Button menuutama;
-  TextView nama, Waktu, RGB, Stress;
+  TextView nama, Waktu, RGB, Stress,Metode;
   ImageView gambar;
+
 
 @Override
 protected void onCreate(Bundle savedInstanceState){
@@ -31,9 +32,11 @@ protected void onCreate(Bundle savedInstanceState){
   // menerima data data seperti nama, nilai RGB,dll dari halaman sebelumnya
   SharedPreferences sp = getApplicationContext().getSharedPreferences("preferensi", Context.MODE_PRIVATE);
   SharedPreferences sp2 = getApplicationContext().getSharedPreferences("preferensi2", Context.MODE_PRIVATE);
+  SharedPreferences sp3 = getApplicationContext().getSharedPreferences("gentode", Context.MODE_PRIVATE);
   String nama1 = sp.getString("nama", "");
   String RGB1 = sp2.getString("RGB", "");
   String Stress1 = sp2.getString("Stress","");
+  String Metode1 = sp3.getString("metode", "");
 //
   Date tanggal = Calendar.getInstance().getTime();
 
@@ -43,9 +46,11 @@ protected void onCreate(Bundle savedInstanceState){
   RGB= findViewById(R.id.RGB);
   Stress= findViewById(R.id.stress);
   menuutama= findViewById(R.id.menuutama);
+  Metode = findViewById(R.id.metode);
   nama.setText(nama1);
   RGB.setText(RGB1);
   Stress.setText(Stress1);
+  Metode.setText(Metode1);
   Waktu.setText(DateFormat.format("dd/MM/yyyy",tanggal));
   // menampilkan gambar dari halaman sebelumnya
   Preferences preferences = new Preferences();
@@ -59,6 +64,7 @@ protected void onCreate(Bundle savedInstanceState){
 
 
 menuutama.setOnClickListener(v -> {
+
   Intent intent= new Intent(Simpan.this,diri.class);
   startActivity(intent);
 });

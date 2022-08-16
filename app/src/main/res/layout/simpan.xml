@@ -3,68 +3,96 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="81dp">
 
 
     <TextView
         android:id="@+id/nama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="155dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="29dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="135dp"
         android:text="@string/nam"
+        app:layout_constraintBottom_toTopOf="@+id/stress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/simpan"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/waktu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
+        android:layout_width="157dp"
+        android:layout_height="17dp"
         android:text="@string/waktu"
+        app:layout_constraintBottom_toTopOf="@+id/stress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.036"
         app:layout_constraintStart_toStartOf="@+id/nama"
-        app:layout_constraintTop_toBottomOf="@+id/nama" />
+        app:layout_constraintTop_toBottomOf="@+id/nama"
+        app:layout_constraintVertical_bias="0.133" />
 
     <TextView
         android:id="@+id/RGB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
+        android:layout_width="153dp"
+        android:layout_height="17dp"
+        android:layout_marginBottom="12dp"
         android:text="@string/nilai_rgb"
-        app:layout_constraintStart_toStartOf="@+id/stress"
-        app:layout_constraintTop_toBottomOf="@+id/stress" />
+        app:layout_constraintBottom_toTopOf="@+id/stress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintStart_toStartOf="@+id/nama"
+        app:layout_constraintTop_toBottomOf="@+id/waktu"
+        app:layout_constraintVertical_bias="0.9" />
 
     <TextView
-        android:id="@+id/stress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:text="@string/tingkat_stress"
-        app:layout_constraintStart_toStartOf="@+id/waktu"
-        app:layout_constraintTop_toBottomOf="@+id/waktu" />
+        android:id="@+id/metode"
+        android:layout_width="153dp"
+        android:layout_height="19dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/metode"
+        app:layout_constraintBottom_toTopOf="@+id/stress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/nama"
+        app:layout_constraintTop_toTopOf="@+id/waktu"
+        app:layout_constraintVertical_bias="0.805" />
 
     <Button
         android:id="@+id/menuutama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/menu_utama"
+        android:text="@string/halaman_awal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.772" />
+        app:layout_constraintTop_toBottomOf="@+id/simpan"
+        app:layout_constraintVertical_bias="0.876" />
 
     <ImageView
         android:id="@+id/simpan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/menuutama"
-        app:layout_constraintEnd_toStartOf="@+id/stress"
-        app:layout_constraintHorizontal_bias="0.025"
+        android:layout_width="126dp"
+        android:layout_height="150dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.108"
+        app:layout_constraintVertical_bias="0.035"
+        tools:ignore="ContentDescription"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/stress"
+        android:layout_width="152dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="28dp"
+        android:text="Tingkat Stress"
+        app:layout_constraintBottom_toBottomOf="@+id/simpan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.011"
+        app:layout_constraintStart_toEndOf="@+id/simpan" />
 </androidx.constraintlayout.widget.ConstraintLayout>
